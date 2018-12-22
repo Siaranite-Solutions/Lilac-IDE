@@ -7,7 +7,7 @@ namespace Lilac.CLI
 {
     class Program
     {
-        private static bool UseBuiltinExe = false;
+        private static bool UseBuiltinExe = true;
 
         public static byte[] HelloWorld =
         {

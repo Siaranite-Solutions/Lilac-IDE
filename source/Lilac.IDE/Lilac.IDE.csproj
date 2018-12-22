@@ -153,7 +153,7 @@
       <Project>{ad4fc4a9-f4b6-49d3-91da-ebe542c0eed6}</Project>
       <Name>Lilac.Compiler</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Apollo-VM\Apollo_IL.csproj">
+    <ProjectReference Include="..\..\Apollo-IL\source\Apollo-VM\Apollo_IL.csproj">
       <Project>{f2c5086a-4d10-4a00-82b9-173d7496249e}</Project>
       <Name>Apollo_IL</Name>
     </ProjectReference>

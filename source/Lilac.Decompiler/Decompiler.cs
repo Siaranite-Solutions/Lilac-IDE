@@ -259,14 +259,20 @@ namespace Lilac.Decompiler
                         else if (AddressMode == AddressMode.ValueRegister)
                         {
                             int num = 0;
-                            byte[] value = new byte[] { operation[1], operation[2], operation[3], operation[4] };
+                            byte[] value = new byte[] { operation[2], operation[3] };
                             foreach (byte b in value)
                             {
                                 num += b;
                             }
                             param1 = num.ToString();
 
-                            param2 = GetRegister(operation[5]);
+                            int num2 = 0;
+                            byte[] value2 = new byte[] { operation[4], operation[5] };
+                            foreach (byte b in value)
+                            {
+                                num2 += b;
+                            }
+                            param2 = num2.ToString();
                         }
                         else if (AddressMode == AddressMode.RegisterValue)
                         {
@@ -281,13 +287,13 @@ namespace Lilac.Decompiler
                         }
                         else if (AddressMode == AddressMode.ValueValue)
                         {
-                            byte[] value1 = new byte[] { operation[2], operation[3] };
+                            byte[] value1 = new byte[] { operation[1], operation[2] };
                             int num1 = 0;
                             foreach (byte b in value1)
                             {
                                 num1 += b;
                             }
-                            byte[] value2 = new byte[] { operation[4], operation[5] };
+                            byte[] value2 = new byte[] { operation[3], operation[4] };
                             int num2 = 0;
                             foreach (byte b in value2)
                             {
@@ -295,6 +301,11 @@ namespace Lilac.Decompiler
                             }
                             param1 = num1.ToString();
                             param2 = num2.ToString();
+                        }
+                        else
+                        {
+                            param1 = "";
+                            param2 = "";
                         }
 
                         Line = instr + " " + param1 + " " + param2 + "\n";

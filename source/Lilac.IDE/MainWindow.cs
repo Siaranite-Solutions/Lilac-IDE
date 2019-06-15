@@ -701,5 +701,50 @@ namespace Lilac.IDE
                 }
             }            
         }
+
+        private void ViewBinaryArrayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string cs_array = "";
+            this.Cursor = Cursors.WaitCursor;
+            Errors.Clear();
+            try
+            {
+                AILCompiler.Compiler compiler = new AILCompiler.Compiler(GetCurrentDocument.Text);
+                byte[] programMade = compiler.Compile();
+
+                if (programMade == null)
+                {
+                    throw new AILCompiler.BuildException("Unknown Error", 0);
+                }
+                else
+                {
+                    int n = 0;
+                    for (int i = 0; i < programMade.Length; i++)
+                    {
+                        n++;
+                        if (n != 6)
+                        {
+                            cs_array += (programMade[i].ToString() + ", ");
+                        }
+                        else
+                        {
+                            cs_array += (programMade[i].ToString() + ", \n");
+                            n = 0;
+                        }
+                    }
+                }
+                BinaryArray ba = new BinaryArray(cs_array);
+                ba.Show();
+            }
+            catch (AILCompiler.BuildException ex)
+            {
+                GetCurrentDocument.BackColor = Color.Red;
+                DataRow row = Errors.NewRow();
+                row["Message"] = ex.Message;
+                row["Line Number"] = ex.SrcLineNumber.ToString();
+                Errors.Rows.Add(row);
+            }
+            this.Cursor = Cursors.Default;
+        }
     }
 }

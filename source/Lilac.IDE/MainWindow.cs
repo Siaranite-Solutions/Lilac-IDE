@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using AILCompiler = Lilac.Compiler;
 using System.IO;
@@ -399,6 +400,10 @@ namespace Lilac.IDE
             }
         }
 
+        public static Debugger Program;
+
+
+
         private void DebugApp(bool DebugMode)
         {
             if (GetCurrentDocument != null)
@@ -406,10 +411,16 @@ namespace Lilac.IDE
                 Console.Clear();
                 Console.WriteLine("Starting...");
                 Errors.Rows.Clear();
+                Watcher watchdog = new Watcher();
+                watchdog.Show();
+                Thread watch = new Thread(watchdog.Update);
+                
                 try
                 {
                     AILCompiler.Compiler SourceOutput = new AILCompiler.Compiler(GetCurrentDocument.Text + "\nKEI 2");
-                    Debugger Program = new Debugger(SourceOutput.Compile(), DebugMode);
+                    Program = new Debugger(SourceOutput.Compile(), DebugMode);
+
+                    watch.Start();
                     Program.Run();
                 }
                 catch (ArgumentException ex)

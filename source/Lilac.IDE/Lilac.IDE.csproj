@@ -113,6 +113,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Watcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Watcher.Designer.cs">
+      <DependentUpon>Watcher.cs</DependentUpon>
+    </Compile>
     <Compile Include="RuntimeIO.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
@@ -139,6 +145,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Watcher.resx">
+      <DependentUpon>Watcher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>

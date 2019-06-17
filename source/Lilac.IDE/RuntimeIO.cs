@@ -35,26 +35,34 @@ namespace Lilac.IDE
         }
     }
 
-    class Debugger
+    public class Debugger
     {
         public bool DebugMode = true;
+
+        public VM virtualMachine;
+
+        public void Run()
+        {
+            virtualMachine.Execute();
+        }
 
         public Debugger(byte[] executable, bool verbose)
         {
             this.Program = executable;
+            virtualMachine = new VM(executable, (executable.Length + 1024));
         }
 
         public byte[] Program = null;
 
-        public void Run()
+        public void Prep()
         {
             byte[] LoadedApplication = Program;
             Globals.console = new RuntimeIO();
             Globals.DebugMode = DebugMode;
-            Console.Title = "Apollo-VM Runtime - Hello World!";
+            Console.Title = "Apollo-VM Runtime - Debugger";
             try
             {
-                Executable.Run(LoadedApplication);
+                Run();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey(true);

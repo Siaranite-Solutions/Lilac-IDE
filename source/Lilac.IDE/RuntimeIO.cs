@@ -34,48 +34,4 @@ namespace Lilac.IDE
             return Console.ReadLine();
         }
     }
-
-    public class Debugger
-    {
-        public bool DebugMode = true;
-
-        public VM virtualMachine;
-
-        public void Run()
-        {
-            virtualMachine.Execute();
-        }
-
-        public Debugger(byte[] executable, bool verbose)
-        {
-            this.Program = executable;
-            virtualMachine = new VM(executable, (executable.Length + 1024));
-        }
-
-        public byte[] Program = null;
-
-        public void Prep()
-        {
-            byte[] LoadedApplication = Program;
-            Globals.console = new RuntimeIO();
-            Globals.DebugMode = DebugMode;
-            Console.Title = "Apollo-VM Runtime - Debugger";
-            try
-            {
-                Run();
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey(true);
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.Message + "\nPress any key to terminate...");
-                Console.ReadKey(true);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Clear();
-            }
-        }
-    }
 }

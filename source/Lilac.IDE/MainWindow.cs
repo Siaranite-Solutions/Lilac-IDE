@@ -400,7 +400,7 @@ namespace Lilac.IDE
             }
         }
 
-        public static Debugger Program;
+        
 
 
 
@@ -413,15 +413,12 @@ namespace Lilac.IDE
                 Errors.Rows.Clear();
                 Watcher watchdog = new Watcher();
                 watchdog.Show();
-                Thread watch = new Thread(watchdog.Update);
                 
                 try
                 {
                     AILCompiler.Compiler SourceOutput = new AILCompiler.Compiler(GetCurrentDocument.Text + "\nKEI 2");
-                    Program = new Debugger(SourceOutput.Compile(), DebugMode);
-
-                    watch.Start();
-                    Program.Run();
+                    watchdog.Program = new Debugger(SourceOutput.Compile(), DebugMode);
+                    watchdog.Start();
                 }
                 catch (ArgumentException ex)
                 {

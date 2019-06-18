@@ -4,8 +4,6 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo_IL", "Apollo-IL\source\Apollo-VM\Apollo_IL.csproj", "{F2C5086A-4D10-4A00-82B9-173D7496249E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIL-Runtime", "Apollo-IL\source\AIL-Runtime\AIL-Runtime.csproj", "{381E5440-C1CF-410C-B802-514C7CFFD3FA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lilac.CLI", "source\Lilac.CLI\Lilac.CLI.csproj", "{CA4774FB-B0DE-4228-A72B-2EB8A58694F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lilac.IDE", "source\Lilac.IDE\Lilac.IDE.csproj", "{948B8435-DB59-436E-AC8A-CACC2714C43A}"

@@ -105,6 +105,7 @@
     <Compile Include="BinaryArray.Designer.cs">
       <DependentUpon>BinaryArray.cs</DependentUpon>
     </Compile>
+    <Compile Include="Debugger.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
